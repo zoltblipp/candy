@@ -1,8 +1,10 @@
 /**
  * A Representation of a Candy.
- * 
+ *
  * TODO: Make immutable.
  * NOTE: Do NOT make the class final.
+ *
+ * @author XXXX
  */
 public class Candy {
   /** The amount of Candy. */
@@ -16,7 +18,7 @@ public class Candy {
 
   /**
    * Constructor for Candy.
-   * 
+   *
    * @param amount The amount of Candy.
    * @param kind   The kind of Candy.
    */
@@ -28,7 +30,7 @@ public class Candy {
 
   /**
    * Get the amount of Candy.
-   * 
+   *
    * @return The amount of Candy.
    */
   public int getAmount() {
@@ -37,7 +39,7 @@ public class Candy {
 
   /**
    * Get the kind of Candy.
-   * 
+   *
    * @return The kind of Candy.
    */
   public String getName() {
@@ -46,7 +48,7 @@ public class Candy {
 
   /**
    * Check if the Candy is opened or not.
-   * 
+   *
    * @return True if the Candy is opened,
    *         false otherwise.
    */
@@ -56,16 +58,14 @@ public class Candy {
 
   /**
    * Eat one Candy if it is opened.
-   * 
-   * @return A Candy with amount subtracted by one
+   *
+   * @return The Candy with amount subtracted by one
    *         if the Candy is opened.  Otherwise,
    *         return the Candy unchanged.
    */
   public Candy eat() {
     if (this.opened && this.amount > 0) {
-      Candy candy = new Candy(this.amount - 1, this.kind);
-      candy.opened = this.opened;
-      return candy;
+      this.amount -= 1;
     }
     return this;
   }
@@ -73,21 +73,17 @@ public class Candy {
   /**
    * Open the Candy.  Does not matter if the
    * Candy is already opened.
-   * 
-   * @return An opened Candy.
+   *
+   * @return The opened Candy.
    */
   public Candy open() {
-    if (this.opened) {
-      return this;
-    }
-    Candy candy = new Candy(this.amount, this.kind);
-    candy.opened = true;
-    return candy;
+    this.opened = true;
+    return this;
   }
 
   /**
    * Return a String representation of Candy.
-   * 
+   *
    * @return A String representation of a Candy.
    */
   @Override
@@ -103,7 +99,7 @@ public class Candy {
    * Check if two Candies are equal.  Two Candies
    * are equal if they are the same kind regardless
    * of the amount or if the Candy is opened.
-   * 
+   *
    * @param obj The other Candy to be compared.
    * @return    True of the two Candies are equal.
    *            Return false otherwise.
